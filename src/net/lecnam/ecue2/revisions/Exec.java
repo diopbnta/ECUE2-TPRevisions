@@ -2,7 +2,8 @@ package net.lecnam.ecue2.revisions;
 
 public class Exec {
     static void main() {
-        exercice1();
+        //exercice1();
+        exercice2();
 
     }
 
@@ -33,4 +34,18 @@ public class Exec {
         System.out.println("client1 et client3 sont égaux : "
                 + client1.equals(client3));
     }
+    private static void exercice2(){
+        try{
+            throw new SoldeInsuffisantException(
+                    "le solde est insuffiasant",150.15
+            );
+
+        }catch (SoldeInsuffisantException e){
+            System.out.println("Erreur : "+e.getMessage());
+            System.out.println("Montant Manquant " + e.getMontantManquant() + " euros");
+        }
+
+    }
+
+
 }
