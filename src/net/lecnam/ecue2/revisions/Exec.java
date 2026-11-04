@@ -3,7 +3,8 @@ package net.lecnam.ecue2.revisions;
 public class Exec {
     static void main() {
         //exercice1();
-        exercice2();
+        //exercice2();
+        exercice4();
 
     }
 
@@ -46,6 +47,40 @@ public class Exec {
         }
 
     }
+
+
+    private static void exercice4() {
+
+        Client client = new Client("DIOP", "Alioune", "C001");
+
+        // Création d'un compte courant avec découvert de 500 €
+        CompteCourant compte = new CompteCourant("CC001", client, 500.0);
+
+        // Dépôt de 300 €
+        compte.deposer(300);
+
+        System.out.println("Solde initial : " + compte.getSolde());
+
+        try {
+            // Retrait de 600 €
+            compte.retirer(600);
+            System.out.println("Retrait effectué.");
+
+            System.out.println("Nouveau solde : " + compte.getSolde());
+
+            // Retrait supplémentaire de 300 €
+            compte.retirer(300);
+
+        } catch (SoldeInsuffisantException e) {
+
+            System.out.println("Erreur : " + e.getMessage());
+            System.out.println("Montant manquant : "
+                    + e.getMontantManquant() + " €");
+        }
+
+        System.out.println(compte);
+    }
+
 
 
 }
